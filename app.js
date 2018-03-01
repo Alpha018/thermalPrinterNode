@@ -49,13 +49,16 @@ app.get('/printer', (req, res) =>{
     printer.drawLine();
     printer.alignLeft();
     printer.println('Nombre: Juanito Perez');
+    printer.alignRight();
+    printer.print('RUT: 1-9');
+    printer.alignLeft();
     printer.println('Tipo: Almuerzo');
     printer.alignRight();
-    printer.println('RUT: 1-9');
-    printer.println('Empresa: incacoya');
+    printer.print('Empresa: incacoya');
     printer.drawLine();
     printer.alignCenter();
     printer.println('Gracias!!');
+    printer.printQR("https://foro.blessedpld.cl");
     printer.cut();
     printer.execute(function (err) {
         if(err) {

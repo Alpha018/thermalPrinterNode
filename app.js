@@ -48,13 +48,15 @@ app.get('/printer', (req, res) =>{
     printer.println('TICKET DE ALMUERZO');
     printer.drawLine();
     printer.alignLeft();
-    printer.println('Nombre: Juanito Perez');
+    printer.print('Nombre: Juanito Perez');
     printer.alignRight();
     printer.print('RUT: 1-9');
+    printer.println('');
     printer.alignLeft();
-    printer.println('Tipo: Almuerzo');
+    printer.print('Tipo: Almuerzo');
     printer.alignRight();
     printer.print('Empresa: incacoya');
+    printer.println('');
     printer.drawLine();
     printer.alignCenter();
     printer.println('Gracias!!');

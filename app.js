@@ -46,11 +46,14 @@ app.get('/printer', (req, res) =>{
     });
     printer.alignCenter();
     printer.println('TICKET DE ALMUERZO');
-    printer.setTextNormal();
-    printer.println('_________________________');
+    printer.drawLine();
+    printer.alignLeft();
     printer.println('Nombre: Juanito Perez');
     printer.println('Tipo: Almuerzo');
-    printer.println('_________________________');
+    printer.alignRight();
+    printer.println('RUT: 1-9');
+    printer.println('Empresa: incacoya');
+    printer.drawLine();
     printer.alignCenter();
     printer.println('Gracias!!');
     printer.cut();

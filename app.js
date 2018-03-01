@@ -39,6 +39,7 @@ app.use('/api/asunto', asunto_routes);
 app.use('/api/solicitud', solicitud_routes);*/
 
 app.get('/printer', (req, res) =>{
+    const hora = new Date();
     let printer = require('node-thermal-printer');
     printer.init({
        type: 'printer',
@@ -48,19 +49,12 @@ app.get('/printer', (req, res) =>{
     printer.println('TICKET DE ALMUERZO');
     printer.drawLine();
     printer.alignLeft();
-    printer.print('Nombre: Juanito Perez');
-    printer.alignRight();
-    printer.print('RUT: 1-9');
-    printer.println('');
-    printer.alignLeft();
-    printer.print('Tipo: Almuerzo');
-    printer.alignRight();
-    printer.print('Empresa: incacoya');
-    printer.println('');
-    printer.drawLine();
+    printer.println('Nombre: Juanito Perez - RUT: 1-9');
+    printer.println('Tipo: Almuerzo - Empresa: incacoya');
     printer.alignCenter();
+    printer.println('Hora: ' + hora.getDay() + '-' + hora.getHours() + ':' + hora.getMinutes());
+    printer.drawLine();
     printer.println('Gracias!!');
-    printer.printQR("https://foro.blessedpld.cl");
     printer.cut();
     printer.execute(function (err) {
         if(err) {

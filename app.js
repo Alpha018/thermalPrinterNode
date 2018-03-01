@@ -49,10 +49,10 @@ app.get('/printer', (req, res) =>{
     printer.println('TICKET DE ALMUERZO');
     printer.drawLine();
     printer.alignLeft();
-    printer.println('Nombre: Juanito Perez - RUT: 1-9');
-    printer.println('Tipo: Almuerzo - Empresa: incacoya');
+    printer.println('Nombre: Juanito Perez        - RUT: 1-9');
+    printer.println('Tipo: Almuerzo               - Empresa: incacoya');
     printer.alignCenter();
-    printer.println('Hora: ' + hora.getDay() + '-' + hora.getHours() + ':' + hora.getMinutes());
+    printer.println('Dia: ' + hora.getDay() + ' - Hora: ' + hora.getHours() + ':' + hora.getMinutes());
     printer.drawLine();
     printer.println('Gracias!!');
     printer.cut();

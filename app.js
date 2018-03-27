@@ -47,11 +47,11 @@ app.post('/printer', (req, res) =>{
        interface: '/dev/usb/lp0'
     });
     printer.alignCenter();
-    printer.println('TICKET DE ALMUERZO');
+    printer.println('TICKET DE SERVICIO');
     printer.drawLine();
     printer.alignLeft();
     printer.println('Nombre: ' + params.nombre + '        - RUT: ' + params.rut);
-    printer.println('Tipo: ' + params.tipo + '               - Empresa: '+ params.empresa);
+    printer.println('Tipo: ' + params.tipo.toUpperCase() + '            - Empresa: '+ params.empresa);
     printer.alignCenter();
     printer.println('Dia: ' + hora.getDay() + ' - Hora: ' + hora.getHours() + ':' + hora.getMinutes());
     printer.drawLine();

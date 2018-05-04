@@ -42,7 +42,7 @@ app.use('/api/solicitud', solicitud_routes);*/
 app.post('/printer', (req, res) =>{
     const params = req.body;
     const hora = new Date();
-    const horaformateada = dateFormat(hora, '"Día:" dd/mm/yyyy - "Hora:" HH:MM');
+    const horaformateada = dateFormat(hora, '"Fecha:" dd/mm/yyyy - "Hora:" HH:MM');
 
     let printer = require('node-thermal-printer');
     printer.init({

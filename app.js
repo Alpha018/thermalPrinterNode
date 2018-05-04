@@ -6,6 +6,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const dateFormat = require('dateformat');
 
 const app = express();
 
@@ -41,11 +42,14 @@ app.use('/api/solicitud', solicitud_routes);*/
 app.post('/printer', (req, res) =>{
     const params = req.body;
     const hora = new Date();
+    const horaformateada = dateFormat(hora, '"Día:" dd/mm/yyyy - "Hora:" HH:MM');
+
     let printer = require('node-thermal-printer');
     printer.init({
        type: 'printer',
        interface: '/dev/usb/lp0'
     });
+
     printer.alignCenter();
     printer.println('TICKET DE SERVICIO');
     printer.drawLine();
@@ -53,7 +57,7 @@ app.post('/printer', (req, res) =>{
     printer.println('Nombre: ' + params.nombre + '        - RUT: ' + params.rut);
     printer.println('Tipo: ' + params.tipo.toUpperCase() + '            - Empresa: '+ params.empresa);
     printer.alignCenter();
-    printer.println('Dia: ' + hora.getDay() + ' - Hora: ' + hora.getHours() + ':' + hora.getMinutes());
+    printer.println(horaformateada);
     printer.drawLine();
     printer.println('Gracias!!');
     printer.cut();
